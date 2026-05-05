@@ -21,6 +21,7 @@
             <option value="ux">UX/UI</option>
             <option value="qa">QA / Tester</option>
             <option value="ba">Business Analyst</option>
+            <option value="dev">Developer</option>
           </select>
         </label>
 

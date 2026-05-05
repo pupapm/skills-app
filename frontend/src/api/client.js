@@ -90,6 +90,12 @@ export const api = {
       body: JSON.stringify(payload),
     }),
 
+  submitDev: (payload) =>
+    request("/v1/dev/submit", {
+      method: "POST",
+      body: JSON.stringify(payload),
+    }),
+
   managerMembers: (periodY, role) =>
     request(
       `/v1/manager/members?period_y=${encodeURIComponent(periodY)}&role=${encodeURIComponent(role)}`

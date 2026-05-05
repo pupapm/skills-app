@@ -39,6 +39,14 @@ export function formatRoleBreakdown(role, breakdown) {
       { key: "risk", label: "Risk Prevention", max: 20 },
       { key: "credit", label: "Contribution Credit", max: 10 },
     ],
+
+    dev: [
+        { key: "exp", label: "Experience", max: 15 },
+        { key: "quality", label: "Code Quality", max: 30 },
+        { key: "delivery", label: "Delivery Discipline", max: 25 },
+        { key: "engineering", label: "Engineering Practice", max: 20 },
+        { key: "credit", label: "Contribution Credit", max: 10 },
+    ],
   };
 
   const selected = config[role] || Object.keys(b).map((key) => ({

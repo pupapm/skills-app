@@ -582,6 +582,205 @@
         </div>
       </template>
 
+      <!-- DEV FORM -->
+<template v-else-if="session.role === 'dev'">
+  <div class="section">
+    <div class="section-head">
+      <div>
+        <div class="section-kicker">EXPERIENCE</div>
+        <h3>Experience Context</h3>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="field-hint">
+        ระยะเวลาประสบการณ์ในบทบาท Developer เพื่อใช้เป็น context ของความเชี่ยวชาญ
+      </div>
+
+      <label>
+        <span class="field-title">Experience</span>
+        <select v-model="dev.dev_tenure_bucket">
+          <option>&lt; 6 เดือน</option>
+          <option>6 - 12 เดือน</option>
+          <option>1 - 2 ปี</option>
+          <option>2 - 4 ปี</option>
+          <option>&gt; 4 ปี</option>
+        </select>
+      </label>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head">
+      <div>
+        <div class="section-kicker">PROJECT OWNERSHIP</div>
+        <h3>Development Scope & Ownership</h3>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="field-hint">
+        จำนวน <strong>โปรเจกต์ที่คุณเป็นคนพัฒนาหลัก</strong> ตลอดปี {{ periodY || "2026" }}
+
+        <ul>
+          <li>คุณเป็นคน implement feature หลัก / module หลัก</li>
+          <li>เป็นคนแก้ logic สำคัญ หรือ core flow ของระบบ</li>
+          <li>ทีม rely on คุณในส่วน dev ของงานนั้น</li>
+        </ul>
+      </div>
+
+      <label>
+        <span class="field-title">Main Projects</span>
+        <input v-model.number="dev.dev_main_projects" type="number" min="0" />
+      </label>
+    </div>
+
+    <div class="form-group">
+      <div class="field-hint">
+        จำนวน <strong>โปรเจกต์ที่คุณเข้าไปช่วยบางส่วน</strong> ตลอดปี {{ periodY || "2026" }}
+
+        <ul>
+          <li>ช่วยแก้ bug / refactor / support feature บางจุด</li>
+          <li>ไม่ได้เป็น owner หลักของ module</li>
+        </ul>
+      </div>
+
+      <label>
+        <span class="field-title">Support Projects</span>
+        <input v-model.number="dev.dev_support_projects" type="number" min="0" />
+      </label>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head">
+      <div>
+        <div class="section-kicker">CODE QUALITY</div>
+        <h3>Quality & Stability</h3>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="field-hint">
+        จำนวน bug ที่เกิดจาก code ของคุณเองหลัง deploy
+
+        <ul>
+          <li>logic error</li>
+          <li>edge case ที่พลาด</li>
+          <li>regression จาก code change</li>
+        </ul>
+      </div>
+
+      <label>
+        <span class="field-title">Bug From Own Code</span>
+        <input v-model.number="dev.bug_from_own_code" type="number" min="0" />
+      </label>
+    </div>
+
+    <div class="form-group">
+      <div class="field-hint">
+        จำนวนโปรเจกต์ที่ code ของคุณ maintainable และไม่ต้อง rewrite ซ้ำ
+
+        <ul>
+          <li>อ่านง่ายและต่อยอดได้</li>
+          <li>dev คนอื่นสามารถเข้าใจและแก้ต่อได้</li>
+          <li>ไม่ต้อง refactor ใหญ่หลัง merge</li>
+        </ul>
+      </div>
+
+      <label>
+        <span class="field-title">Clean Implementation</span>
+        <input v-model.number="dev.clean_implementation" type="number" min="0" />
+      </label>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head">
+      <div>
+        <div class="section-kicker">DELIVERY</div>
+        <h3>Execution Discipline</h3>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="field-hint">
+        จำนวนโปรเจกต์ที่คุณส่งงาน dev ตรงเวลา
+
+        <ul>
+          <li>ส่งตาม timeline ที่ตกลงกับทีม</li>
+          <li>ไม่ delay flow ของ QA / BA / PM / dev คนอื่น</li>
+        </ul>
+      </div>
+
+      <label>
+        <span class="field-title">On-Time Delivery</span>
+        <input v-model.number="dev.on_time_delivery" type="number" min="0" />
+      </label>
+    </div>
+
+    <div class="form-group">
+      <div class="field-hint">
+        จำนวนครั้งที่งานของคุณกลายเป็น blocker ให้ทีม
+
+        <ul>
+          <li>code ไม่เสร็จ ทำให้ QA test ไม่ได้</li>
+          <li>dependency ไม่พร้อม ทำให้ทีมอื่นติด</li>
+          <li>delay จาก dev task ของคุณกระทบงานคนอื่น</li>
+        </ul>
+      </div>
+
+      <label>
+        <span class="field-title">Blocker Caused</span>
+        <input v-model.number="dev.blocker_caused" type="number" min="0" />
+      </label>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head">
+      <div>
+        <div class="section-kicker">ENGINEERING PRACTICE</div>
+        <h3>Technical Maturity</h3>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="field-hint">
+        จำนวนครั้งที่คุณช่วย review code ให้ทีม
+
+        <ul>
+          <li>ให้ feedback ที่ improve quality</li>
+          <li>detect bug ก่อน merge</li>
+          <li>ช่วยให้ codebase maintainable ขึ้น</li>
+        </ul>
+      </div>
+
+      <label>
+        <span class="field-title">Code Review Contribution</span>
+        <input v-model.number="dev.code_review_contribution" type="number" min="0" />
+      </label>
+    </div>
+
+    <div class="form-group">
+      <div class="field-hint">
+        จำนวนงาน optimization / refactor ที่คุณทำ
+
+        <ul>
+          <li>improve performance</li>
+          <li>refactor code ให้ maintain ง่ายขึ้น</li>
+          <li>ลด complexity ของระบบ</li>
+        </ul>
+      </div>
+
+      <label>
+        <span class="field-title">Optimization / Refactor Work</span>
+        <input v-model.number="dev.optimization_work" type="number" min="0" />
+      </label>
+    </div>
+  </div>
+</template>
+
       <div class="submit-row">
         <button type="button" @click="submit" :disabled="loading">
           {{ loading ? "Submitting..." : "Submit Data" }}
@@ -645,6 +844,18 @@ const ba = reactive({
   risk_prevented_count_main: 0,
 });
 
+const dev = reactive({
+  dev_tenure_bucket: "1 - 2 ปี",
+  dev_main_projects: 0,
+  dev_support_projects: 0,
+  bug_from_own_code: 0,
+  clean_implementation: 0,
+  on_time_delivery: 0,
+  blocker_caused: 0,
+  code_review_contribution: 0,
+  optimization_work: 0,
+});
+
 const loading = ref(false);
 const success = ref(false);
 const error = ref("");
@@ -658,13 +869,15 @@ async function submit() {
 
   try {
     if (session.role === "ux") {
-      result.value = await api.submitUX({ period_y: periodY.value, ...ux });
+        result.value = await api.submitUX({ period_y: periodY.value, ...ux });
     } else if (session.role === "qa") {
-      result.value = await api.submitQA({ period_y: periodY.value, ...qa });
+        result.value = await api.submitQA({ period_y: periodY.value, ...qa });
     } else if (session.role === "ba") {
-      result.value = await api.submitBA({ period_y: periodY.value, ...ba });
+        result.value = await api.submitBA({ period_y: periodY.value, ...ba });
+    } else if (session.role === "dev") {
+        result.value = await api.submitDev({ period_y: periodY.value, ...dev });
     } else {
-      throw new Error("Unknown role");
+        throw new Error("Unknown role");
     }
 
     success.value = true;

@@ -35,6 +35,7 @@ func main() {
 	registerUX(app, pool)
 	registerQA(app, pool)
 	registerBA(app, pool)
+	registerDev(app, pool)
 
 	registerScoreRoutes(app, pool)
 	registerManagerRoutes(app, pool)
